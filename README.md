@@ -46,7 +46,8 @@
     }
   ```
   reducers/cart.js  
-  ```javascript
+  ------------
+```javascript
     import { ActionConst } from 'react-native-router-flux';
     import * as types from '../action';
     const initialState = {
@@ -64,9 +65,9 @@
                 return state;
         }
     }
-  ```
-  2.```page```文件夹中相当于view层，所有页面渲染都在当前，```Index.js```
-  ------------------
+```
+2.```page```文件夹中相当于view层，所有页面渲染都在当前，```Index.js```
+------------------
   ```javascript
   import React, { Component, PropTypes } from 'react';
   import { Text, View,Button } from 'react-native';
