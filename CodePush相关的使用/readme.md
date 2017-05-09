@@ -23,9 +23,10 @@ Documents
     > - step1:  code-push app add stylewe-test
     > - 执行结果如下所示，记得要保存好相关的Deployment Key
 
-> ** 配置相关的As代码:**
-     > - step1: 导入code-push的依赖包，package.json如所下所示：
-   {
+配置手机端相关的代码
+
+   > - step1: 导入code-push的依赖包，package.json如所下所示：
+    {
 	  "name": "example-android",
 	  "version": "1.50.00",
 	  "description": "example test",
