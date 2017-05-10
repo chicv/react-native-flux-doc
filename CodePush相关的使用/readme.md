@@ -60,10 +60,10 @@ Documents
 	}
 	
 	
-     > - step2: 在项目的根目录下面执行---> npm install 
+> - step2: 在项目的根目录下面执行---> npm install 
      
      
-     > - step3: 在AndroidStudio里面进行code push 的引用配置
+> - step3: 在AndroidStudio里面进行code push 的引用配置
      
      
      /setting.gradle 加入
@@ -87,10 +87,10 @@ Documents
      }
      
      
-     > - step4: 执行gradle
+> - step4: 执行gradle
      
      
-     > - step5: Application中进行配置
+> - step5: Application中进行配置
      
      
           ExampleApplication.onCreate(){
