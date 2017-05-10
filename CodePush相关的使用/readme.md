@@ -217,16 +217,15 @@ Documents
 > -  -r:    可以用于切量，0-100 ，用于做流量的分发。
       
       
-
- 常用code-push命令：
-    > - 查看应用列表：code-push app list
+ > **常用code-push命令：** 
+ > - 查看应用列表：code-push app list
     
-    > -  查看版本更新列表以及当前安装的人数：
+ > -  查看版本更新列表以及当前安装的人数：
     
      code-push deployment history stylewe-test Production
      code-push deployment history stylewe-test Staging
      
-    > - 其它的更多命令可参考官网： 
+ > - 其它的更多命令可参考官网： 
     
     
 
