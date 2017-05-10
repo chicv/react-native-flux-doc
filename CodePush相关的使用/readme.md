@@ -193,7 +193,8 @@ echo “ok ,starting to building bundle js”
 ```			
 > - step2: 将新生成文件上传到服务器上
   
-```      code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
+```      
+code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
 ```
 
 > **这个命令需要在这边解释一下：**
