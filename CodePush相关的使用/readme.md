@@ -191,20 +191,18 @@ Documents
   
       code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
 
-这个命令需要在这边解释一下
-
+> **这个命令需要在这边解释一下：**
 
        > - app-test :指的是，您在服务器上面当时增加的应用名称，还记得code-push app add [应用名么]  ？也可以查看一下现在服务器上面的应用列表
        
-       
        > - 1.5.0 :这个是对应应用的版本号，这块有个问题，就是他只识别[].[].[] 不能使用1.50.00类似的这样的版本格式，并且这边对应的android/app/build.gradle中,只有这两个对应上了，才能达到效果。 
+       
        android{
        	defaultConfig{
        		versionName "[版本名称]"
        	}
        }
-
-          
+    
       > -  Staging: 指的是发布开发版本，但如果说是你要发到正式服上面的话，则使用 Production 	
       
       > - --des: 后面则是为这个版本增加一些描述
