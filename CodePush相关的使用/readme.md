@@ -153,9 +153,7 @@ Documents
 
 > **配置js的启动代码:**
 
-
-  > - step1: 在你的入口js文件中，配置如下代码
-  
+> - step1: 在你的入口js文件中，配置如下代码
   
   import codePush from 'react-native-code-push';
   class App extends Component{
