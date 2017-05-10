@@ -28,7 +28,7 @@ Documents
    > - step1: 导入code-push的依赖包，package.json如所下所示：
    
    
-    ```{
+    {
 	  "name": "example-android",
 	  "version": "1.50.00",
 	  "description": "example test",
@@ -57,11 +57,15 @@ Documents
 	    "react-redux": "^5.0.4",
 	    "redux": "^3.6.0"
 	  }
-	}```
+	}
 	
 	
      > - step2: 在项目的根目录下面执行---> npm install 
+     
+     
      > - step3: 在AndroidStudio里面进行code push 的引用配置
+     
+     
      /setting.gradle 加入
      include ':react-native-code-push'
      project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '/node_modules/react-native-code-push/android/app')
@@ -81,15 +85,21 @@ Documents
        	 }
        }
      }
+     
+     
      > - step4: 执行gradle
+     
+     
      > - step5: Application中进行配置
+     
+     
           ExampleApplication.onCreate(){
           	CodePush.setReactInstanceHolder(mReactNativeHost);
           }
 
               //Reactive Native CodePush
-    private final MyReactNativeHost mReactNativeHost = new MyReactNativeHost(this);
-    public class MyReactNativeHost extends ReactNativeHost implements ReactInstanceHolder{
+	    private final MyReactNativeHost mReactNativeHost = new MyReactNativeHost(this);
+	    public class MyReactNativeHost extends ReactNativeHost implements ReactInstanceHolder{
 
         XKCommomViewPackage mXKPackage;
         protected MyReactNativeHost(Application application) {
@@ -139,8 +149,14 @@ Documents
         return mReactNativeHost;
     }
 
+
+
 > **配置js的启动代码:**
+
+
   > - step1: 在你的入口js文件中，配置如下代码
+  
+  
   import codePush from 'react-native-code-push';
   class App extends Component{
      constructor()
@@ -151,8 +167,13 @@ Documents
  	 }
   }
 
+
  > **生成assets文件：**
+ 
+ 
+ 
   > - step1: 将js文件编译后存放在android 应用的assets中，而后将其打包放入apk中。./export-bundle-to-assets.sh
+  
 		  	echo “ok ,starting to building bundle js”
 			Cur_Dir=$(pwd)
 			echo $Cur_Dir
@@ -166,7 +187,11 @@ Documents
       code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
 
 这个命令需要在这边解释一下
+
+
        > - app-test :指的是，您在服务器上面当时增加的应用名称，还记得code-push app add [应用名么]  ？也可以查看一下现在服务器上面的应用列表
+       
+       
        > - 1.5.0 :这个是对应应用的版本号，这块有个问题，就是他只识别[].[].[] 不能使用1.50.00类似的这样的版本格式，并且这边对应的android/app/build.gradle中,只有这两个对应上了，才能达到效果。 
        android{
        	defaultConfig{
@@ -176,15 +201,29 @@ Documents
 
           
       > -  Staging: 指的是发布开发版本，但如果说是你要发到正式服上面的话，则使用 Production 	
+      
+      
       > - --des: 后面则是为这个版本增加一些描述
+      
+      
       > -  -r:    可以用于切量，0-100 ，用于做流量的分发。
+      
+      
 
  常用code-push命令：
     > - 查看应用列表：code-push app list
-   > -  查看版本更新列表以及当前安装的人数：
+    
+    
+    > -  查看版本更新列表以及当前安装的人数：
+    
+    
      code-push deployment history stylewe-test Production
      code-push deployment history stylewe-test Staging
+     
+     
     > - 其它的更多命令可参考官网： 
+    
+    
 
      
 
