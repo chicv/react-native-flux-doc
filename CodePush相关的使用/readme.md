@@ -225,10 +225,10 @@ code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --de
  > **常用code-push命令：** 
  > - 查看应用列表：code-push app list
     
- > -  查看版本更新列表以及当前安装的人数：
+ > -  查看版本更新列表以及当前安装的人数：app-test 是指你添加的应用名
 ```sh    
-     code-push deployment history stylewe-test Production
-     code-push deployment history stylewe-test Staging
+     code-push deployment history app-test Production
+     code-push deployment history app-test Staging
 ``` 
 
 ![注册流程](./images/log.png)
