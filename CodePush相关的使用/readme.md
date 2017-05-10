@@ -25,7 +25,7 @@ Documents
 
 配置手机端相关的代码
 
-   > - step1: 导入code-push的依赖包，package.json如所下所示：
+> - step1: 导入code-push的依赖包，package.json如所下所示：
    
    
     {
@@ -179,13 +179,13 @@ Documents
 	echo “ok ,bundle.js file build finished  sufun”
 			
 			
-  > - step2: 生成需要同步到codepush服务器的bundle文件   ./export-bundle-to-bundles.sh
+> - step2: 生成需要同步到codepush服务器的bundle文件   ./export-bundle-to-bundles.sh
   
 	  #!/bin/bash
 	echo “start to export the bundles for the code push“
 	react-native bundle --platform android --entry-file index.android.js --bundle-output ./bundles/index.android.bundle --dev false	
 			
-  > - step2: 将新生成文件上传到服务器上
+> - step2: 将新生成文件上传到服务器上
   
       code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
 
