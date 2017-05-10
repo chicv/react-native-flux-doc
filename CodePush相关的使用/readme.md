@@ -229,7 +229,9 @@ code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --de
 ```sh    
      code-push deployment history stylewe-test Production
      code-push deployment history stylewe-test Staging
-```     
+``` 
+
+![注册流程](https://www.stylewe.com/static/stylewe/pc/image/log.png)
  > - 其它的更多命令可参考官网： 
     
     
