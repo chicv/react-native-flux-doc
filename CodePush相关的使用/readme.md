@@ -26,6 +26,8 @@ Documents
 配置手机端相关的代码
 
    > - step1: 导入code-push的依赖包，package.json如所下所示：
+   
+   
     ```{
 	  "name": "example-android",
 	  "version": "1.50.00",
@@ -55,7 +57,9 @@ Documents
 	    "react-redux": "^5.0.4",
 	    "redux": "^3.6.0"
 	  }
-	}```	 
+	}```
+	
+	
      > - step2: 在项目的根目录下面执行---> npm install 
      > - step3: 在AndroidStudio里面进行code push 的引用配置
      /setting.gradle 加入
