@@ -179,11 +179,16 @@ Documents
 			echo $Cur_Dir
 			react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output $Cur_Dir/app/src/main/assets/index.android.bundle --assets-dest $Cur_Dir/app/src/main/res
 			echo “ok ,bundle.js file build finished  sufun”
+			
+			
   > - step2: 生成需要同步到codepush服务器的bundle文件   ./export-bundle-to-bundles.sh
+  
 		  #!/bin/bash
 			echo “start to export the bundles for the code push“
 			react-native bundle --platform android --entry-file index.android.js --bundle-output ./bundles/index.android.bundle --dev false	
-  将新生成文件上传到服务器上
+			
+  > - step2: 将新生成文件上传到服务器上
+  
       code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
 
 这个命令需要在这边解释一下
@@ -202,10 +207,8 @@ Documents
           
       > -  Staging: 指的是发布开发版本，但如果说是你要发到正式服上面的话，则使用 Production 	
       
-      
       > - --des: 后面则是为这个版本增加一些描述
-      
-      
+     
       > -  -r:    可以用于切量，0-100 ，用于做流量的分发。
       
       
@@ -213,13 +216,10 @@ Documents
  常用code-push命令：
     > - 查看应用列表：code-push app list
     
-    
     > -  查看版本更新列表以及当前安装的人数：
-    
     
      code-push deployment history stylewe-test Production
      code-push deployment history stylewe-test Staging
-     
      
     > - 其它的更多命令可参考官网： 
     
