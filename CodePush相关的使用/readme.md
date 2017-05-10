@@ -2,6 +2,8 @@ CodePush是用于ReactNative的js代码同步的一个服务，公司现在使�
 ===================
 Documents
 -------------
+![注册流程](https://www.stylewe.com/static/stylewe/pc/image/logo.png)
+
 >**使用步骤**
   > - 注册CodePush 帐号 
   > - 创建App
