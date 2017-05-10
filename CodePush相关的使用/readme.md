@@ -62,7 +62,7 @@ Documents
 	}
 ```	
 	
-> - step2: 在项目的根目录下面执行---> ```npm install``` 
+> - step2: 在项目的根目录下面执行 ```npm install``` 
      
      
 > - step3: 在AndroidStudio里面进行code push 的引用配置
@@ -176,7 +176,8 @@ import codePush from 'react-native-code-push';
  
  > - step1: 将js文件编译后存放在android 应用的assets中，而后将其打包放入apk中。./export-bundle-to-assets.sh
 
-```	echo “ok ,starting to building bundle js”
+```sh	
+echo “ok ,starting to building bundle js”
 	Cur_Dir=$(pwd)
 	echo $Cur_Dir
 	react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output $Cur_Dir/app/src/main/assets/index.android.bundle --assets-dest $Cur_Dir/app/src/main/res
@@ -224,7 +225,7 @@ import codePush from 'react-native-code-push';
  > - 查看应用列表：code-push app list
     
  > -  查看版本更新列表以及当前安装的人数：
-```    
+```sh    
      code-push deployment history stylewe-test Production
      code-push deployment history stylewe-test Staging
 ```     
