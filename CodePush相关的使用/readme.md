@@ -17,7 +17,7 @@ Documents
   > - 浏览器自动打开，使用github授权，得到accesskey
   > - step2: 输入codepush access-key
  操作流程如下所示：
-![enter image description here](https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1494394383638&di=304b7cd5d0fa23f4e7a006cf250a3585&imgtype=0&src=http://img0.ph.126.net/XjXl3KcowmXdE1pcsFVe8g==/1067353111787095545.jpg)
+![注册流程](./images/register.png)
 
  > **创建App:**
     > - step1:  code-push app add stylewe-test
