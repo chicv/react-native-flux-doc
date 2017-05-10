@@ -160,30 +160,30 @@ Documents
      constructor()
      {
        super()
-       //关于这个同步的方式有多种，可具体参考业务要求https://microsoft.github.io/code-push/docs/tutorials.html
+       /**
+       *关于这个同步的方式有多种，
+       *可具体参考业务要求https://microsoft.github.io/code-push/docs/tutorials.html
+       ***/
        codePush.sync({installMode:codePush.InstallMode.IMMEDIATE});
  	 }
   }
 
-
  > **生成assets文件：**
  
- 
- 
-  > - step1: 将js文件编译后存放在android 应用的assets中，而后将其打包放入apk中。./export-bundle-to-assets.sh
+ > - step1: 将js文件编译后存放在android 应用的assets中，而后将其打包放入apk中。./export-bundle-to-assets.sh
   
-		  	echo “ok ,starting to building bundle js”
-			Cur_Dir=$(pwd)
-			echo $Cur_Dir
-			react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output $Cur_Dir/app/src/main/assets/index.android.bundle --assets-dest $Cur_Dir/app/src/main/res
-			echo “ok ,bundle.js file build finished  sufun”
+	echo “ok ,starting to building bundle js”
+	Cur_Dir=$(pwd)
+	echo $Cur_Dir
+	react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output $Cur_Dir/app/src/main/assets/index.android.bundle --assets-dest $Cur_Dir/app/src/main/res
+	echo “ok ,bundle.js file build finished  sufun”
 			
 			
   > - step2: 生成需要同步到codepush服务器的bundle文件   ./export-bundle-to-bundles.sh
   
-		  #!/bin/bash
-			echo “start to export the bundles for the code push“
-			react-native bundle --platform android --entry-file index.android.js --bundle-output ./bundles/index.android.bundle --dev false	
+	  #!/bin/bash
+	echo “start to export the bundles for the code push“
+	react-native bundle --platform android --entry-file index.android.js --bundle-output ./bundles/index.android.bundle --dev false	
 			
   > - step2: 将新生成文件上传到服务器上
   
