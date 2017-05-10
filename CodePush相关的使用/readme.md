@@ -29,7 +29,7 @@ Documents
 
 > - step1: 导入code-push的依赖包，package.json如所下所示：
    
-```   
+```javascript   
     {
 	  "name": "example-android",
 	  "version": "1.50.00",
@@ -62,14 +62,14 @@ Documents
 	}
 ```	
 	
-> - step2: 在项目的根目录下面执行---> npm install 
+> - step2: 在项目的根目录下面执行---> ```npm install``` 
      
      
 > - step3: 在AndroidStudio里面进行code push 的引用配置
      
      
      /setting.gradle 加入
-```
+```java
 include ':react-native-code-push'
      project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '/node_modules/react-native-code-push/android/app')
      /app/build.gradle
@@ -90,12 +90,12 @@ include ':react-native-code-push'
      }
      
 ```     
-> - step4: 执行gradle
+> - step4: 执行```gradle```
      
      
 > - step5: Application中进行配置
      
-```     
+```java     
           ExampleApplication.onCreate(){
           	CodePush.setReactInstanceHolder(mReactNativeHost);
           }
@@ -158,7 +158,8 @@ include ':react-native-code-push'
 
 > - step1: 在你的入口js文件中，配置如下代码
   
-```  import codePush from 'react-native-code-push';
+```javascript  
+import codePush from 'react-native-code-push';
   class App extends Component{
      constructor()
      {
@@ -184,7 +185,8 @@ include ':react-native-code-push'
 			
 > - step2: 生成需要同步到codepush服务器的bundle文件   ./export-bundle-to-bundles.sh
   
-```	#!/bin/bash
+```sh	
+#!/bin/bash
 	echo “start to export the bundles for the code push“
 	react-native bundle --platform android --entry-file index.android.js --bundle-output ./bundles/index.android.bundle --dev false	
 ```			
@@ -201,7 +203,7 @@ include ':react-native-code-push'
        
 > - 1.5.0 :这个是对应应用的版本号，这块有个问题，就是他只识别[].[].[] 不能使用1.50.00类似的这样的版本格式，并且这边对应的android/app/build.gradle中,只有这两个对应上了，才能达到效果。
        
-```       
+```java       
        android{
        	defaultConfig{
        		versionName "[版本名称]"
