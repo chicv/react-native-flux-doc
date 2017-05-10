@@ -157,7 +157,7 @@ Documents
 
 > - step1: 在你的入口js文件中，配置如下代码
   
-  import codePush from 'react-native-code-push';
+```  import codePush from 'react-native-code-push';
   class App extends Component{
      constructor()
      {
@@ -169,7 +169,7 @@ Documents
        codePush.sync({installMode:codePush.InstallMode.IMMEDIATE});
  	 }
   }
-
+```
  > **生成assets文件：**
  
  > - step1: 将js文件编译后存放在android 应用的assets中，而后将其打包放入apk中。./export-bundle-to-assets.sh
