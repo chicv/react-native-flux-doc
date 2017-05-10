@@ -29,7 +29,7 @@ Documents
 
 > - step1: 导入code-push的依赖包，package.json如所下所示：
    
-   
+```   
     {
 	  "name": "example-android",
 	  "version": "1.50.00",
@@ -60,7 +60,7 @@ Documents
 	    "redux": "^3.6.0"
 	  }
 	}
-	
+```	
 	
 > - step2: 在项目的根目录下面执行---> npm install 
      
@@ -69,7 +69,8 @@ Documents
      
      
      /setting.gradle 加入
-     include ':react-native-code-push'
+```
+include ':react-native-code-push'
      project(':react-native-code-push').projectDir = new File(rootProject.projectDir, '/node_modules/react-native-code-push/android/app')
      /app/build.gradle
      android{
@@ -88,13 +89,13 @@ Documents
        }
      }
      
-     
+```     
 > - step4: 执行gradle
      
      
 > - step5: Application中进行配置
      
-     
+```     
           ExampleApplication.onCreate(){
           	CodePush.setReactInstanceHolder(mReactNativeHost);
           }
@@ -150,7 +151,7 @@ Documents
     {
         return mReactNativeHost;
     }
-
+```
 
 
 > **配置js的启动代码:**
@@ -173,24 +174,24 @@ Documents
  > **生成assets文件：**
  
  > - step1: 将js文件编译后存放在android 应用的assets中，而后将其打包放入apk中。./export-bundle-to-assets.sh
-  
-	echo “ok ,starting to building bundle js”
+
+```	echo “ok ,starting to building bundle js”
 	Cur_Dir=$(pwd)
 	echo $Cur_Dir
 	react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output $Cur_Dir/app/src/main/assets/index.android.bundle --assets-dest $Cur_Dir/app/src/main/res
 	echo “ok ,bundle.js file build finished  sufun”
-			
+```			
 			
 > - step2: 生成需要同步到codepush服务器的bundle文件   ./export-bundle-to-bundles.sh
   
-	  #!/bin/bash
+```	#!/bin/bash
 	echo “start to export the bundles for the code push“
 	react-native bundle --platform android --entry-file index.android.js --bundle-output ./bundles/index.android.bundle --dev false	
-			
+```			
 > - step2: 将新生成文件上传到服务器上
   
-      code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
-
+```      code-push release app-test ./bundles/index.android.bundle 1.5.0  -d Staging --des "1.50.01 debug-静默用户更新与立即安装-print-headers.value " -r 100
+```
 
 > **这个命令需要在这边解释一下：**
 
@@ -200,13 +201,13 @@ Documents
        
 > - 1.5.0 :这个是对应应用的版本号，这块有个问题，就是他只识别[].[].[] 不能使用1.50.00类似的这样的版本格式，并且这边对应的android/app/build.gradle中,只有这两个对应上了，才能达到效果。
        
-       
+```       
        android{
        	defaultConfig{
        		versionName "[版本名称]"
        	}
        }
-    
+```    
     
 > -  Staging: 指的是发布开发版本，但如果说是你要发到正式服上面的话，则使用 Production 	
       
@@ -221,10 +222,10 @@ Documents
  > - 查看应用列表：code-push app list
     
  > -  查看版本更新列表以及当前安装的人数：
-    
+```    
      code-push deployment history stylewe-test Production
      code-push deployment history stylewe-test Staging
-     
+```     
  > - 其它的更多命令可参考官网： 
     
     
