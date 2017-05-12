@@ -4,7 +4,7 @@ RN与原生之间的通信归纳
 >代码如下所示
 
 
-```
+```java
  public class CommApiModule extends ReactContextBaseJavaModule {
 
     private Context mContex;
@@ -64,12 +64,12 @@ RN与原生之间的通信归纳
 ｝
 ```
 而Native那边实现是：restApi.js
-```   
+```javascript   
 import { NativeModules } from 'react-native';
 module.exports = NativeModules.RestApi;  
 ```   
 使用： CartIndex.js
-```   
+```javascript   
 import RestApi from '../../model/restApi';
 
       RestApi.doGet("cart"
@@ -99,7 +99,7 @@ import RestApi from '../../model/restApi';
 Promises是ES6的一个新的特性，在React Native中你会看到Promises的大量使用.原生模块也是支持Promises的，这对喜欢使用Promises的小伙伴则是一个很好的消息。
 
 在原生模块中：
-```
+```java
 public class RNTestModule extends ReactContextBaseJavaModule{
     public RNTestModule(ReactApplicationContext reactContext) {
         super(reactContext);
@@ -133,7 +133,8 @@ public class RNTestModule extends ReactContextBaseJavaModule{
 
 在JS模块中：
 
-``` async test() {
+```javascript
+ async test() {
   try {
     var {
         relativeX,
@@ -151,7 +152,7 @@ public class RNTestModule extends ReactContextBaseJavaModule{
 > - 在上述代码中，通过ES7的新特性async/await来修饰了 test 方法，来以同步方式调用原生模块的 measureLayout 方法，如果原生模块处理成功， 那么JS中relativeX,relativeY,width,height会获得相应的值，如果原生模块处理失败，则会抛出异常。
 
 如果，不希望以同步的形式调用，可以这样写：
-``` 
+```javascript 
 test2(){
   RNTest.measureLayout(100,100).then(e=>{
     console.log(e.relativeX + ':' + e.relativeY + ':' + e.width + ':' + e.height);
@@ -168,7 +169,9 @@ test2(){
 ``` 
 > - 如果，不希望以同步的形式调用，可以这样写：
 
-``` test2(){
+```javascript
+
+ test2(){
   RNTest.measureLayout(100,100).then(e=>{
     console.log(e.relativeX + ':' + e.relativeY + ':' + e.width + ':' + e.height);
     this.setState({
@@ -189,7 +192,7 @@ test2(){
 原生模块支持另外一种向JS模块传递数据的方式，通过发送事件的方式。原生模块，可以向JS传递事件而不需要直接的调用，就像Android中的广播，iOS中的通知中心。下面就向大家演示通过 RCTDeviceEventEmitter ，来向JS传递事件。
 
 在原生模块中：
-```
+```java
 @Override
 public void onHandleResult(String barcodeData) {
     WritableMap params = Arguments.createMap();
@@ -208,7 +211,7 @@ private void sendEvent(ReactContext reactContext,String eventName, @Nullable Wri
 在JS模块中：
 
 下面是在JS代码中进行监听原生模块发出的名为“onScanningResult”的事件。
-```
+```javascript
 componentDidMount() {
     //注册扫描监听
     DeviceEventEmitter.addListener('onScanningResult',this.onScanningResult);
@@ -223,14 +226,16 @@ onScanningResult = (e)=> {
 
 > - 在JS中通过 DeviceEventEmitter 注册监听了名为“onScanningResult”的事件，当原生模块发出名为“onScanningResult”的事件后，绑定在该事件上的 onScanningResult = (e) 会被回调。 然后通过 e.result 就可获得事件所携带的数据。
 
-> - 心得：如果在JS中有多处注册了 onScanningResult 事件，那么当原生模块发出事件后，这几个地方会同时收到该事件。不过大家也可以通过 DeviceEventEmitter.removeListener('onScanningResult',this.onScanningResult) 来移除对名为“onScanningResult”事件的监听。
-
+> - 心得：如果在JS中有多处注册了 onScanningResult 事件，那么当原生模块发出事件后，这几个地方会同时收到该事件。不过大家也可以通过 
+```javascript
+DeviceEventEmitter.removeListener('onScanningResult',this.onScanningResult) 来移除对名为“onScanningResult”事件的监听。
+```
 > - 另外，JS模块也支持通过 Subscribable mixin，也注册监听事件，因为ES6已经不再推荐使用mixin，所以在这里也就不向大家介绍了。
 
 对比
 >**三种方式的优缺点**
 
-方式                  |   性能
+方式                  |   特性
 -------------------|-------------------|    
 通过Callbacks的方式| 只能传递一次  传递可控，JS模块调用一次，原生模块传递一次
 通过Promises的方式|  只能传递一次  传递可控，JS模块调用一次，原生模块传递一次
